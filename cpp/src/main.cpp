@@ -16,6 +16,9 @@ void loadAndShowImage() {
     // Wyœwietl wynik
     cv::imshow("Oryginalny obraz", image);
     cv::imshow("Przetworzony obraz (szary)", gray);
+    cv::Mat edges;
+    cv::Canny(gray, edges, 100, 200);  // Detekcja krawêdzi
+    cv::imshow("Krawêdzie (Canny)", edges);
     cv::waitKey(0);
 }
 
