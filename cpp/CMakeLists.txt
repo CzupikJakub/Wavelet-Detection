@@ -9,7 +9,7 @@ find_package(OpenCV REQUIRED)
 # Dodaj pliki Ÿród³owe
 add_executable(${PROJECT_NAME} 
     src/main.cpp
-)
+ )
 
 # Pod³¹cz OpenCV
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})

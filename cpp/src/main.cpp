@@ -1,11 +1,25 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
-int main() {
-    std::cout << "DZIALA! Teraz dodajmy OpenCV...\n";
-    cv::Mat test_image = cv::Mat::zeros(300, 300, CV_8UC3);
-    cv::circle(test_image, cv::Point(150, 150), 100, cv::Scalar(0, 0, 255), 5);
-    cv::imshow("Test", test_image);
+void loadAndShowImage() {
+    cv::Mat image = cv::imread("C:\\Users\\Asus\\Documents\\GitHub\\Wavelet-Detection\\data\\vehicles\\0000.png");
+    if (image.empty()) {
+        std::cerr << "B³¹d: Nie znaleziono pliku!" << std::endl;
+        return;
+    }
+
+    // Przetwarzanie wstêpne
+    cv::Mat gray;
+    cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
+    cv::resize(gray, gray, cv::Size(640, 480));
+
+    // Wyœwietl wynik
+    cv::imshow("Oryginalny obraz", image);
+    cv::imshow("Przetworzony obraz (szary)", gray);
     cv::waitKey(0);
+}
+
+int main() {
+    loadAndShowImage();
     return 0;
 }
